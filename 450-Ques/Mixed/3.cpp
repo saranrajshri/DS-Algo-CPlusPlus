@@ -14,6 +14,8 @@ bool isOk(vector<int>arr, int gap, int m) {
 		}
 	}
 	return false;
+
+
 }
 
 int helper(vector<int>arr, int m) {
