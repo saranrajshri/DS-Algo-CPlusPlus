@@ -7,7 +7,7 @@ int missingNumber(vector<int> nums) {
 		missing ^= x;
 	}
 
-	for(int i = 0; i < nums.size(); i++) {
+	for(int i = 0; i <= nums.size(); i++) {
 		missing ^= i;
 	}
 
