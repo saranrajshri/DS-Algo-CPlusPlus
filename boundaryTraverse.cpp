@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Time - O(N)
-// Space - O(N)
+// Time Complexity - O(N)
+// Space Complexity - O(N)
 
 void leftBoundary(TreeNode *root) {
 	if(root) {
