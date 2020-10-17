@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+/*
+	Approach - Kadane's Algorithm
+	time - O(N);
+	Space -O(N);
+*/
+
+int largestSubArray(vector<int>arr){
+	int maxEndHere = arr[0];
+	int maxSoFar = arr[0];
+
+	for(int i = 0; i < arr.size(); i++) {
+		maxEndHere = max(maxEndHere, maxEndHere + arr[i]);
+		maxSoFar = max(maxSoFar, maxEndHere);
+		maxEndHere = max(maxEndHere, maxSoFar);
+	}
+
+	return maxSoFar;
+}
+
+
+int main() {
+	vector<int>arr = {1, 2, 3, -10, 1};
+	cout <<  largestSubArray(arr);
+
+	return 0;
+}
