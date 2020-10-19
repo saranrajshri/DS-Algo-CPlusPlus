@@ -14,7 +14,7 @@ void sort(vector<int>&arr) {
 		else twosCount++;
 	}
 
-	int index = 0;
+	int index = 0;		
 
 	// Traverse the array
 	while(index < arr.size()) {
@@ -38,7 +38,44 @@ void sort(vector<int>&arr) {
 	}
 }
 
+/*
+	Approach 2 - Dutch National Flag Algorithm
+	1. Initialize three pointers low = mid = 0, high = n - 1;
+	2. Traverse the array from the left;
+	3. If the mid element is zero, move it to the left half, low++, mid++;
+	4. If the mid element is 1, keep the element as it is and shrink the unknown range;
+	5. If the mid element is 2, move it to the right half;
+	
+	Similar to QuickSort 
 
+	Time - O(N);
+	Space - O(1);
+*/ 
+
+void swap(vector<int>&arr, int left, int right) {
+	int temp = arr[left];
+	arr[left] = arr[right];
+	arr[right] = temp;
+}
+
+void sort(vector<int>&arr) {
+	int low = 0, mid = 0;
+	int high = arr.size() - 1;
+
+	while(mid <= high) {
+		switch(arr[mid]) {
+			case 0:
+				swap(arr, low++, mid++);
+				break;
+			case 1:
+				mid++;
+				break;
+			case 2:
+				swap(arr, mid, high--);
+				break;
+		}
+	}
+}
 
 int main() {
 	vector<int>arr = {1, 0, 1, 2, 2, 1, 0};
