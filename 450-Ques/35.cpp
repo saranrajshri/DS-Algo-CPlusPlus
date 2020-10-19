@@ -20,7 +20,7 @@ double getMedian(vector<int>nums1, vector<int>nums2) {
 	} 
 
 	/*	
-		Now we have an array of length > 2;
+		Now we have an array of length > 2;c
 		find the median of nums1 and nums2;
 
 	*/ 
