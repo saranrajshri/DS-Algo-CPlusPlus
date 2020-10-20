@@ -1,44 +1,79 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 /*
-	Approach - Min Heap;
-	1. Insert all the elements in the minheap and pop it from the heap.
-	2. Push it to the resultant array;	
+	Approach 1 - Simple Traverse
+	Time - O(M * N);
+	Space - O(1);
 */ 
-vector<int> sortedMatrix(vector<vector<int>> matrix) {
-	priority_queue<int, vector<int>, greater<int>>maxHeap;
-	
-	int m = matrix.size();
-	int n = matrix[0].size();
-	int index = 0;
-	vector<int>res(m * n);
-	
+
+int rowWithMaxOnes(vector<vector<int>>matrix) {
+	int maxRowIndex = -1;
+	int maxCount = INT_MIN;
+
 	for(int i = 0; i < matrix.size(); i++) {
+		int onesCount = 0;
 		for(int j = 0; j < matrix[i].size(); j++) {
-			maxHeap.push(matrix[i][j]);
+			if(matrix[i][j] == 1) onesCount++;
+		}	
+
+		if(onesCount > maxCount) {
+			maxCount = onesCount;
+			maxRowIndex = i;
 		}
 	}
 
-	while(!maxHeap.empty()) {
-		int top = maxHeap.top();
-		maxHeap.pop();
-		res[index++] = top;
+	return maxRowIndex;
+}
+
+/*
+	Approach 2 - Traverse + Binary Search
+	Since each row is sorted, we can use binary search;
+
+
+	Time - O(M * log N);
+	Space - O(1);
+*/ 
+
+int lowerBound(vector<int>arr, int target) {
+	int left = 0;
+	int right = arr.size() - 1;
+
+	while(left <= right) {
+		int mid = left + (right - left) / 2;
+
+		if(arr[mid] < target) left = mid + 1;
+		else right = mid - 1;
 	}
 
-	return res;
+	return left;
+}
+
+int rowWithMaxOnes(vector<vector<int>> matrix) {
+	int maxRowIndex = -1;
+	int maxCount = INT_MIN;
+
+	for(int i = 0; i < matrix.size(); i++) {
+		vector<int>currentRow = matrix[i];
+		int leftIndex = lowerBound(currentRow, 1);
+		int rightIndex = lowerBound(currentRow, 2) - 1;
+
+		int onesCount = rightIndex - leftIndex;
+		if(onesCount > maxCount) {
+			maxCount = onesCount;
+			maxRowIndex = i;
+		}
+	}
+
+	return maxRowIndex;
 }
 
 int main() {
-	vector<vector<int>>matrix = { {10, 20, 30, 40}, 
-                    	{15, 25, 35, 45}, 
-                   	 	{27, 29, 37, 48}, 
-                    	{32, 33, 39, 50}, 
-               			};	
-
-    vector<int>res = sortedMatrix(matrix);
-	for(int x : res) {
-		cout << x << " "; 
-	}
+	vector<vector<int>> matrix = { {0, 0, 0, 1},  
+                    {0, 1, 1, 1},  
+                    {1, 1, 1, 1},  
+                    {0, 0, 0, 0}};
+	cout << rowWithMaxOnes(matrix);  
 	return 0;
 }
