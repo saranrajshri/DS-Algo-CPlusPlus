@@ -12,9 +12,8 @@ int largestSubArray(vector<int>arr){
 	int maxSoFar = arr[0];
 
 	for(int i = 0; i < arr.size(); i++) {
-		maxEndHere = max(maxEndHere, maxEndHere + arr[i]);
+		maxEndHere = max(arr[i], maxEndHere + arr[i]);
 		maxSoFar = max(maxSoFar, maxEndHere);
-		maxEndHere = max(maxEndHere, maxSoFar);
 	}
 
 	return maxSoFar;
