@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-	Singly Linked List
+	Circular Linked List
 */		
 
 // Node Structure
@@ -73,30 +73,35 @@ ListNode* constructLinkedList() {
 	push(head, 30);
 	push(head, 20);
 	push(head, 40);
-	
-	
+
+
+    head->next->next->next = head;
+
 	return head;
 }
 
 /*
-	
+	Solution
 */		
+bool isCircular(ListNode* head) {
+	if(head == NULL) return false;
 
-ListNode* middleNode(ListNode* head) {
-    ListNode* fast = head;
-    ListNode* slow = head;
-    
-    while(fast && fast->next) {
-        fast = fast->next->next;
-        slow = slow->next;
-    }
-    
-    return slow;
+	ListNode* ptr = head;
+
+	while(ptr && ptr != head) {
+		ptr = ptr->next;
+	}
+
+	return ptr == head;
 }
 
 int main() {
 	ListNode* head = constructLinkedList();
-	ListNode* middle = middleNode(head);
-	cout << middle->val << endl;
+
+	if(isCircular(head)) {
+		cout << "Yes" << endl;
+	}else{
+		cout << "No" << endl;
+	}
 	return 0;
 }

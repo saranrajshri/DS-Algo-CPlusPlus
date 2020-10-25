@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-	Singly Linked List
+	Circular Linked List
 */		
 
 // Node Structure
@@ -73,30 +73,49 @@ ListNode* constructLinkedList() {
 	push(head, 30);
 	push(head, 20);
 	push(head, 40);
-	
-	
+
+
+    head->next->next->next = head;
+
 	return head;
 }
 
 /*
-	
+	Solution
+	Time - O(N);
+	Space - O(1);
 */		
 
-ListNode* middleNode(ListNode* head) {
-    ListNode* fast = head;
-    ListNode* slow = head;
-    
-    while(fast && fast->next) {
-        fast = fast->next->next;
-        slow = slow->next;
-    }
-    
-    return slow;
+void splitList(ListNode* head) {
+	ListNode* fast = head;
+	ListNode* slow = head;
+
+	ListNode* leftHead = NULL;
+	ListNode* rightHead = NULL;
+
+	while(fast->next != head && fast->next->next != head) {
+		fast = fast->next->next;
+		slow = slow->next;
+	}
+
+	if(fast->next->next == head) {
+		fast = fast->next;
+	}
+
+	leftHead = head;
+
+	if(head->next != head) {
+		rightHead = slow->next;
+	}
+
+	fast->next = rightHead;
+	slow->next = leftHead;
+
 }
 
 int main() {
 	ListNode* head = constructLinkedList();
-	ListNode* middle = middleNode(head);
-	cout << middle->val << endl;
+	splitList(head);
+	
 	return 0;
 }

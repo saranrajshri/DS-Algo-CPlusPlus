@@ -70,33 +70,58 @@ ListNode* constructLinkedList() {
 	head->next = NULL;
 
 	// add nodes to linked list
-	push(head, 30);
-	push(head, 20);
-	push(head, 40);
-	
-	
+	push(head, 1);
+	push(head, 1);
+	push(head, 1);
+
 	return head;
 }
 
-/*
-	
-*/		
-
-ListNode* middleNode(ListNode* head) {
-    ListNode* fast = head;
-    ListNode* slow = head;
+ListNode* reverseList(ListNode* head){
+    ListNode* prev = NULL;
+    ListNode* curr = head;
+    ListNode* next = NULL;
     
-    while(fast && fast->next) {
-        fast = fast->next->next;
-        slow = slow->next;
+    while(curr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
     }
     
-    return slow;
+    return prev;
+    
+}
+
+bool isPalindrome(ListNode* head) {
+	ListNode* fast = head->next->next;
+	ListNode* slow = head;
+
+	while(fast && fast->next) {
+		fast = fast->next->next;
+		slow = slow->next;
+	}
+
+	slow->next = reverseList(slow->next);
+	ListNode* left = head;
+	ListNode* mid = slow->next;
+	ListNode* right = slow->next;
+
+	while(left != mid && left->val == right->val) {
+		left = left->next;
+		right = right->next;
+	}
+	if(left == mid) return true;
+
+	return false;
 }
 
 int main() {
 	ListNode* head = constructLinkedList();
-	ListNode* middle = middleNode(head);
-	cout << middle->val << endl;
+	if(isPalindrome(head)) {
+		cout << "Yes" << endl;
+	}else{
+		cout << "No" << endl;
+	}
 	return 0;
 }
