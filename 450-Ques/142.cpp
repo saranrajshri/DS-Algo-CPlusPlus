@@ -76,39 +76,68 @@ ListNode* constructLinkedList() {
 	head->next = NULL;
 	head->prev = NULL;
 	// add nodes to linked list
+	push(head, 1);
+	push(head, 2);
+	push(head, 3);
+	push(head, 4);
 	push(head, 10);
 	push(head, 20);
-	push(head, 30);
 
 	return head;
 }
 
 /*
-	Pair Sum
-	Approach - Two pointers
-	Time - O(N);
+	Solution
+	Time - O(N ^ 2);
 	Space - O(1);
 */		
 
-void pairSum(ListNode* head, int target) {
-	ListNode* left = head;
-	ListNode* right = head;	
-
-	while(right->next) right = right->next;
-
-	while(left && right && left != right && right->next != left) {
-		if(left->val + right->val == target) {
-			cout << left->val << " " << right->val << endl;
+int findPair(ListNode* left, ListNode* right, int target) {
+	int count = 0;
+	while(left && right && left != right && right->next = left){
+		int currentSum = left->val + right->val;
+		if(sum == target) {
+			count++;
 			left = left->next;
 			right = right->prev;
-		}else  if(left->val + right->val > target) right = right->prev;
-		else left = left->next;
+		}else if(sum > target) {
+			right = right->prev;
+		}else{
+			left = left->next;
+		}
 	}
+
+	return count;
+} 
+
+void countTriplets(ListNode* head, int target) {
+	ListNode* current = head;
+	ListNode* left = NULL, right = NULL;	
+	int count = 0;
+
+	// Find the tail node
+	current = head;
+	while(current->next) current = current->next;
+	right = current;
+
+	// Reset
+	current = head;
+	
+	// Actual Logic 
+	while(current) {
+		left = current->next;
+
+		count += findPair(left, right, target - current->val);
+
+		current = current->next;
+	}
+
+	cout << count << endl;
 }
 
 int main() {
 	ListNode* head = constructLinkedList();
-	int target = 40;
-	pairSum(head, target);
+	int target = 9;
+	countTriplets(head, target);
 	return 0;
 }

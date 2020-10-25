@@ -117,7 +117,7 @@ bool isPalindrome(ListNode* head) {
 }
 
 int main() {
-	ListNode* head = constructLinkedList();
+	ListNode* head = constructLinkedList();	
 	if(isPalindrome(head)) {
 		cout << "Yes" << endl;
 	}else{

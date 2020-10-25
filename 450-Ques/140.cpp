@@ -84,31 +84,28 @@ ListNode* constructLinkedList() {
 }
 
 /*
-	Pair Sum
-	Approach - Two pointers
-	Time - O(N);
-	Space - O(1);
+	Solution
+	Reverse a doubly linked list	
 */		
 
-void pairSum(ListNode* head, int target) {
-	ListNode* left = head;
-	ListNode* right = head;	
+ListNode* reverseList(ListNode* head) {
+	ListNode* temp = NULL;
+	ListNode* current = head;
 
-	while(right->next) right = right->next;
-
-	while(left && right && left != right && right->next != left) {
-		if(left->val + right->val == target) {
-			cout << left->val << " " << right->val << endl;
-			left = left->next;
-			right = right->prev;
-		}else  if(left->val + right->val > target) right = right->prev;
-		else left = left->next;
+	while(current) {
+		temp = current->prev;
+		current->prev = current->next;
+		current->next = temp;
+		current = current->prev;
 	}
+
+	return temp->prev;
 }
 
 int main() {
 	ListNode* head = constructLinkedList();
-	int target = 40;
-	pairSum(head, target);
+	ListNode* reversedHead = reverseList(head);
+	traverse(reversedHead);
+
 	return 0;
 }
