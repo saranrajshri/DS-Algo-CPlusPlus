@@ -32,7 +32,7 @@ TreeNode* constructBinaryTree() {
 	Time - O(n);
 	Space - O(N);
 */		
-
+	
 vector<vector<int>> zigZagTraverse(TreeNode* root) {
 	bool leftToRight = true;
 	queue<TreeNode*>q;
