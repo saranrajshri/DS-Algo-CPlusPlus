@@ -7,6 +7,8 @@ using namespace std;
 	Space - O(N);
 */ 
 
+
+
 vector<pair<int, int>> subArraysWithZero(vector<int> nums) {
 	vector<pair<int, int>> res;
 	unordered_map<int, vector<int>> m;
