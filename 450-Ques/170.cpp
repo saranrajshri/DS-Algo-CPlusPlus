@@ -16,7 +16,6 @@ struct TreeNode {
 	} 
 }; 
 
-
 TreeNode* constructBinaryTree() {
 	
 	TreeNode* root = new TreeNode(1); 
