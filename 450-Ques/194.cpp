@@ -13,8 +13,8 @@ struct TreeNode {
 	TreeNode(int data) { 
 		this->val = data; 
 		left = right = NULL; 
-	} 
-}; 
+	}
+} ; 
 
 
 TreeNode* constructBinaryTree() {
