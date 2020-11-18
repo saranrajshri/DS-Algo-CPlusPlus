@@ -23,7 +23,7 @@ void solve() {
 	push(19);
 	push(29);
 	push(15);
-	push(16);
+	push(16);w
 	cout << getMin() << endl;
 }
 
