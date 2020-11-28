@@ -8,7 +8,7 @@ struct TrieNode {
 
 TrieNode* getNode(void) {
 	TrieNode* newTrieNode = new TrieNode;
-	newTrieNode->isLeaf = -1;
+	newTrieNode->is	Leaf = -1;
 
 	for(int i = 0; i < 26; i++) {
 		newTrieNode->children[i] = NULL;
