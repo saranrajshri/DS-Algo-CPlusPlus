@@ -1,25 +1,49 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool comparator(pair<int, int> pair1, pair<int, int> pair2) {
-	return pair1.second < pair2.second;
-} 
+// int solve(vector<pair<int,int>> arr) {
 
-int solve(vector<pair<int,int>> arr) {
-	int count = 0;
+// 	int platFormsNeeded = 1;
+// 	int ans = 1;
 
-	sort(arr.begin(), arr.end(), comparator);
+// 	for(int i = 0; i < arr.size(); i++) {
+// 		platFormsNeeded = 1;
 
-	int prev = arr[0].second;
+// 		for(int  j = i + 1; j < arr.size(); j++) {
+// 			if(((arr[i].first >= arr[j].first && arr[i].first <= arr[j].second)) || arr[j].first >= arr[i].first && arr[j].first <= arr[i].second) {
+// 				platFormsNeeded++;
+// 			}
+// 		}
 
-	for(int i = 1; i < arr.size(); i++) {
-		if(prev >= arr[i].first) {
-			count++;
-			prev = arr[i].second;
-		}
+// 		ans = max(ans, platFormsNeeded);
+// 	}
+	
+// 	return ans;
+// }
+
+int solve(vector<pair<int, int>> arr) {
+	multimap<int, char> m;
+
+	for(int i = 0; i < arr.size(); i++) {
+		m.insert(make_pair(arr[i].first, 'a'));
+		m.insert(make_pair(arr[i].second, 'd'));
 	}
 
-	return count;
+	// for(auto it = m.begin(); it != m.end(); it++) {
+		// cout  << it->first << " " << it->second <<  endl;
+	// }
+
+	int ans = 0;
+	int platFormsNeeded = 0;
+
+	for(auto it : m) {
+		if(it.second == 'a') platFormsNeeded++;
+		else platFormsNeeded--;
+		
+		ans = max(ans, platFormsNeeded);
+	}
+
+	return ans;
 }
 
 int main() {
