@@ -2,6 +2,7 @@
 using namespace std;
 
 int solve(vector<int>arr) {
+	
 	int maxEndHere = arr[0];
 	int maxSoFar = arr[0];
 
