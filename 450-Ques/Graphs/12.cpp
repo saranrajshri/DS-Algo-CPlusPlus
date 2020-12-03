@@ -2,7 +2,8 @@
 using namespace std;
 
 /*
-The time complexity remains O(ELogV)) as there will be at most O(E) vertices in priority queue and O(Log E) is same as O(Log V)
+	time - O(VlogE)
+	Space - O(V);
 */
 
 class Graph {
@@ -24,7 +25,6 @@ void Graph::addEdge(int u, int v, int w) {
 	adj[v].push_back(make_pair(w, u));
 }
 
-
 void Graph::solve(int source) {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
 	vector<int> distance(V, INT_MAX);
@@ -36,17 +36,17 @@ void Graph::solve(int source) {
 		pair<int, int> currentNode = minHeap.top();
 		minHeap.pop();
 
-		int vertex = currentNode.second;
-	
-		for(auto it = adj[vertex].begin(); it != adj[vertex].end(); it++) {
-			int v = (*it).second;
-			int w = (*it).first;
+		int currentNodeVertex = currentNode.second;
 
-			if(w + distance[vertex] < distance[v]) {
-				distance[v] = w + distance[vertex];
-				minHeap.push(make_pair(distance[v], v));
+		for(auto it = adj[currentNodeVertex].begin(); it != adj[currentNodeVertex].end(); it++) {
+			int adjNodeVertex = (*it).second;
+			int adjNodeWeight = (*it).first;
+
+			if(distance[currentNodeVertex] + adjNodeWeight < distance[adjNodeVertex]) {
+				distance[adjNodeVertex] = distance[currentNodeVertex] + adjNodeWeight;
+				minHeap.push(make_pair(distance[adjNodeVertex], adjNodeVertex));
 			}
-		}
+		} 
 	}
 
 	for(int i = 0; i < V; i++) {
@@ -54,13 +54,10 @@ void Graph::solve(int source) {
 	}
 }
 
-
-
 int main() {
-	 int V = 9; 
-    Graph g(V); 
+	int V = 9; 
+	Graph g(V); 
   
-    //  making above shown graph 
     g.addEdge(0, 1, 4); 
     g.addEdge(0, 7, 8); 
     g.addEdge(1, 2, 8); 
@@ -75,7 +72,6 @@ int main() {
     g.addEdge(6, 7, 1); 
     g.addEdge(6, 8, 6); 
     g.addEdge(7, 8, 7); 
-
-    g.solve(0);
-	return 0;	
+  
+    g.solve(0); 
 }
