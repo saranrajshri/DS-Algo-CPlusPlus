@@ -59,6 +59,6 @@ int main() {
 		cout << flattenedRoot->val << " ";
 		flattenedRoot = flattenedRoot->right;
 	} 
-	
+		
 	return 0; 
 } 
