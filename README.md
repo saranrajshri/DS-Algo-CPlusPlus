@@ -20,5 +20,3 @@ The programs in this repository is written in C++ 14.
 
 # Contributions
 Contributed by [Shri Saran Raj N](https://linkedin.com/in/saranrajshri)
-
-
