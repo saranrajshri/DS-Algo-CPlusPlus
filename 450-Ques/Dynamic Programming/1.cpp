@@ -8,7 +8,7 @@ int solve(vector<int> coins, int amount) {
 		for(int j = 0; j < amount + 1; j++) {
 			if(j == 0) {
 				dp[i][j] = 1;
-			}
+			}	
 			else if(i == 0){
 				dp[i][j] = 0;
 			}
