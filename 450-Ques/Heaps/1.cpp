@@ -45,7 +45,7 @@ void heapify(vector<int>&arr, int currentIndex) {
 void solve(vector<int>&arr) {
 	int midIndex = (arr.size() / 2) - 1;
  
-	for(int i = midIndex; midIndex >= 0; midIndex--) {
+	for(int i = midIndex; i >= 0; i--) {
 		heapify(arr, i);
 	}
 
