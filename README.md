@@ -1,8 +1,10 @@
 # DS Algo C++ Problems
 
 The programs in this repository is written in C++ 14.
-[https://450-dsa-tracker.netlify.app/](https://450-dsa-tracker.netlify.app/)
 
+[Love Babbar's DSA Sheet](https://450-dsa-tracker.netlify.app/)
+
+[Stiver's SDE Sheet](https://docs.google.com/document/d/1SM92efk8oDl8nyVw8NHPnbGexTS9W-1gmTEYfEurLWQ/edit)
 
 # New Features!
   - 450 Algo DS Questions Sheet
