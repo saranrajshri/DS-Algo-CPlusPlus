@@ -1,12 +1,18 @@
 # DS Algo C++ Problems
 
 The programs in this repository is written in C++ 14.
-[https://450-dsa-tracker.netlify.app/](https://450-dsa-tracker.netlify.app/)
+
+[Love Babbar's DSA Sheet](https://450-dsa-tracker.netlify.app/)
+
+[Stiver's SDE Sheet](https://docs.google.com/document/d/1SM92efk8oDl8nyVw8NHPnbGexTS9W-1gmTEYfEurLWQ/edit)
 
 # New Features!
   - 450 Algo DS Questions Sheet
   - LeetCode Problems
   - CSES Problems
+  - [OOPS](https://whimsical.com/object-oriented-programming-cheatsheet-by-love-babbar-YbSgLatbWQ4R5paV7EgqFw)
+  - [CN](https://whimsical.com/networking-cheatsheet-by-love-babbar-FcLExFDezehhfsbDPfZDBv)
+  
   
 | Topic Name | Files Number |
 | ------ | ------ |
@@ -18,4 +24,4 @@ The programs in this repository is written in C++ 14.
 | Backtracking | 204.cpp to ... |
 
 # Contributions
-Contributed by [Shri Saran Raj N](https://linkedin.com/in/saranrajshri)
+Contributed by [Shri Saran Raj N](#)
