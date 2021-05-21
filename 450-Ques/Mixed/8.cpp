@@ -2,45 +2,49 @@
 #define int long long
 using namespace std;
 
-stack<int> s;
+class LRUCache {
+public:
+	list<pair<int, int>> dll;
+	unordered_map<int, list<pair<int, int>> ::iterator> cache;
+	int capacity;
 
-void insertAtCorrectPosition(int x) {
-	if(s.empty() || x < s.top()) {
-		s.push(x);
-		return;
-	}
+    LRUCache(int x) {
+		capacity = x;	
+    }
+    
+    int get(int key) {
+        if(cache.find(key) == m.end()) return -1;
 
-	int top = s.top();
-	s.pop();
+        dll.splice(dll.begin(), dll, cache[key]);
 
-	insertAtCorrectPosition(x);
-	s.push(top);
-}
+        return cache[key]->second;
+    }
+    
+    void put(int key, int value) {
+        if(cache.find(key) != m.end()) {
+        	dll.splice(dll.begin(), dll.end(), cache[key]);
+        	cache[key]->second = value;
+        	return;
+        }else{
+        	if(cache.size() == capacity) {
+        		auto deleteKey = dll.back().first;
+        		cache.erase(deleteKey);
+        		dll.pop_back();
+        	}
+        	dll.push_front({key, value});
+        	cache[key] = dll.begin();
+        }
+    }
+};
 
-void sort() {
-	if(s.empty()) return;
-
-	int temp = s.top();
-	s.pop();
-
-	sort();
-
-	insertAtCorrectPosition(temp);
-}
-
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
 
 
 int32_t main() {
-	s.push(9);
-	s.push(2);
-	s.push(7);
-	s.push(4);
-	s.push(6);
-	sort();
-
-	while(!s.empty()) {
-		cout << s.top() << " "; 
-		s.pop();
-	}
 	return 0;	
 }
