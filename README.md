@@ -12,6 +12,7 @@ The programs in this repository is written in C++ 14.
   - CSES Problems
   - [OOPS](https://whimsical.com/object-oriented-programming-cheatsheet-by-love-babbar-YbSgLatbWQ4R5paV7EgqFw)
   - [CN](https://whimsical.com/networking-cheatsheet-by-love-babbar-FcLExFDezehhfsbDPfZDBv)
+  - [OS](https://whimsical.com/operating-system-cheatsheet-by-love-babbar-S9tuWBCSQfzoBRF5EDNinQ)
   
   
 | Topic Name | Files Number |
